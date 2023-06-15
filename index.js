@@ -214,7 +214,12 @@ async function run() {
             res.json({ teacher: isTeaacher })
         })
 
-
+        app.delete('/deleteSelectClass/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await addToCartCollection.deleteOne(query)
+            res.send(result)
+        })
 
 
 
